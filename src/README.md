@@ -8,7 +8,7 @@ Mongoose & MongoDB
 
 ENV.:
 MONGO_COLLECTION=test
-EXPRESS_PORT=3000
+EXPRESS_PORT=4000
 EXPRESS_HOST="localhost"
 
 HTTP methos used:
