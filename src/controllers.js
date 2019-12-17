@@ -28,17 +28,21 @@ class ToDoControl {
     return ToDoModel.find({ frequency: frequency });
   }
 
-  async deleteByTitle(title) {
-    const delRes = await ToDoModel.deleteOne({ title: title });
+  async deleteById(id) {
+    const delRes = await ToDoModel.deleteOne({ _id: id });
     if (delRes.deletedCount > 0) {
-      return `todo ${title} deleted`;
+      return `todo ${id} deleted`;
     }
 
-    return `status ${title} not deleted`;
+    return `status ${id} not deleted`;
   }
 
-  async updateByUser(user, body) {
-    return ToDoModel.findOneAndUpdate({ user: user }, body, { new: true });
+  async findId(id) {
+    return ToDoModel.findById(id);
+  }
+
+  async updateById(id, body) {
+    return ToDoModel.findOneAndUpdate({ _id: id }, body, { new: true });
   }
 
   async findAll() {

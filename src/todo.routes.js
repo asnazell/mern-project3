@@ -8,6 +8,16 @@ todoRouter.get("/", (req, res) => {
   res.send("ToDo works");
 });
 
+todoRouter.get("/find/:id", async (req, res) => {
+  const result = await ToDoList.findId(req.params.id);
+  res.send(result);
+});
+
+todoRouter.get("/all", async (req, res) => {
+  const result = await ToDoList.findAll();
+  res.send(result);
+});
+
 todoRouter.get("/reset", async (req, res) => {
   const resetResult = await ToDoList.reset();
   res.send(resetResult);
@@ -18,12 +28,12 @@ todoRouter.post("/new", async (req, res) => {
   res.status(newRes.status).send(newRes.msg);
 });
 
-todoRouter.delete("/delete/:title", async (req, res) => {
-  res.send(await ToDoList.deleteByTitle(req.params.title));
+todoRouter.delete("/delete/:id", async (req, res) => {
+  res.send(await ToDoList.deleteById(req.params.id));
 });
 
-todoRouter.put("/update/:user", async (req, res) => {
-  const upRes = await ToDoList.updateByUser(req.params.user, req.body);
+todoRouter.put("/update/:id", async (req, res) => {
+  const upRes = await ToDoList.updateById(req.params.id, req.body);
 
   console.log(upRes);
 

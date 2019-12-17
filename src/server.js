@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const todoRouter = require("./todo.routes");
 const app = express();
 const cors = require("cors");
-const port = process.env.EXPRESS_PORT || 3000;
+const port = process.env.EXPRESS_PORT || 4000;
 const host = process.env.EXPRESS_HOST || "0.0.0.0";
 
 app.get("/", (req, res) => res.send("Hello World!"));
